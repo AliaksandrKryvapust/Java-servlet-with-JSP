@@ -1,6 +1,7 @@
 package groupId.artifactId.service;
 
 import groupId.artifactId.core.entity.Product;
+import groupId.artifactId.core.entity.ProductBuilder;
 import groupId.artifactId.service.api.IProductService;
 import groupId.artifactId.storage.ProductStorage;
 import groupId.artifactId.storage.api.IProductStorage;
@@ -59,8 +60,8 @@ public class ProductService implements IProductService {
 
     @Override
     public void addNewProduct(int id, String name, int price, int discount, String description) {
-       this.validate(new Product(id, name, price, discount, description));
-       this.storage.save(new Product(id, name, price, discount, description));
+       this.validate(ProductBuilder.create().setId(id).setName(name).setPrice(price).setDiscount(discount).setDescription(description).build());
+       this.storage.save(ProductBuilder.create().setId(id).setName(name).setPrice(price).setDiscount(discount).setDescription(description).build());
     }
 
 }
