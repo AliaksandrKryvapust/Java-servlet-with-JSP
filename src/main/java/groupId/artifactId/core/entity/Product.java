@@ -1,13 +1,13 @@
 package groupId.artifactId.core.entity;
 
 public class Product {
-    private final int id;
+    private int id;
     private final String name;
     private final int price;
     private final int discount;
     private final String description;
     Product(int id, String name, int price, int discount, String description) {
-        this.id = id;
+        this.id=id;
         this.name = name;
         this.price = price;
         this.discount = discount;
@@ -32,6 +32,10 @@ public class Product {
 
     public String getDescription() {
         return description;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     @Override

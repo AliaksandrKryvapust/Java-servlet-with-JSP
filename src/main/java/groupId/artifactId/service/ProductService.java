@@ -1,19 +1,23 @@
 package groupId.artifactId.service;
 
+import groupId.artifactId.core.dto.ProductCreationDto;
 import groupId.artifactId.core.entity.Product;
-import groupId.artifactId.core.entity.ProductBuilder;
+import groupId.artifactId.core.mapper.ProductMapper;
 import groupId.artifactId.service.api.IProductService;
 import groupId.artifactId.storage.ProductStorage;
 import groupId.artifactId.storage.api.IProductStorage;
 
 import java.util.List;
+import java.util.Optional;
 
 public class ProductService implements IProductService {
     private static ProductService firstInstance =null;
     private final IProductStorage storage;
+    private final ProductValidator validator;
 
     private ProductService(){
         this.storage= ProductStorage.getInstance();
+        this.validator=ProductValidator.getInstance();
     }
     public static ProductService getInstance() {
         synchronized (ProductService.class) {
@@ -25,43 +29,19 @@ public class ProductService implements IProductService {
     }
 
     @Override
-    public List<Product> get() {
-        return this.storage.getEssences();
+    public List<Product> getById() {
+        return this.storage.get();
     }
 
     @Override
-    public Product get(int id) {
-        return this.storage.getEssenceById(id);
+    public Optional<Product> getById(int id) {
+        return this.storage.getById(id);
     }
 
     @Override
-    public void validate(Product item) {
-        if (item == null) {
-            throw new IllegalStateException("None of Products have been sent as an input");
-        }
-        for ( Product product: this.storage.getEssences()) {
-            if (product.getId()==item.getId()){
-                throw new IllegalArgumentException("This id is already exist");
-            }
-        }
-        if (item.getName() == null || item.getName().isBlank()) {
-            throw new IllegalArgumentException("Product`s name is not valid");
-        }
-        if(item.getPrice()<=0){
-            throw new IllegalArgumentException("Product`s price is negative or zero");
-        }
-        if (item.getDiscount()<0){
-            throw  new IllegalArgumentException("Product`s discount is negative");
-        }
-        if (item.getDescription()==null || item.getDescription().isBlank()){
-            throw new IllegalArgumentException("Product`s description is not valid");
-        }
-    }
-
-    @Override
-    public void addNewProduct(int id, String name, int price, int discount, String description) {
-       this.validate(ProductBuilder.create().setId(id).setName(name).setPrice(price).setDiscount(discount).setDescription(description).build());
-       this.storage.save(ProductBuilder.create().setId(id).setName(name).setPrice(price).setDiscount(discount).setDescription(description).build());
+    public void add(ProductCreationDto productCreationDto) {
+       this.validator.validate(productCreationDto);
+       this.storage.save(ProductMapper.productMapping(productCreationDto));
     }
 
 }

@@ -20,7 +20,7 @@
 
     <p class="select"> <!--declaring classes to group properties-->
        Product list <br> <br> <br>
-        Data foreach product
+        Data foreach product </p>
     <table>
         <tr>
             <th>Product id,#</th>
@@ -49,8 +49,8 @@
         </tr>
                 </c:forEach>
     </table>
-<form method="get" name="add" action="${pageContext.request.contextPath}/product_form">
-    <p><input type="submit" name="submit_btn" value="Add new products"></p>
-</form>
+    <p class="select">
+    <button onclick="location.href='${pageContext.request.contextPath}/product_form'" type="button">Add new products</button>
+    </p>
 </body>
 </html>

@@ -23,18 +23,12 @@
     Data foreach product
 <table>
     <tr>
-        <th>Product id,#</th>
         <th>Product name</th>
         <th>Product price,$</th>
         <th>Product discount,$</th>
         <th>Product description</th>
     </tr>
     <tr>
-            <td>
-                <label>
-                    <textarea name="id"></textarea>
-                </label>
-            </td>
             <td>
                 <label>
                     <textarea name="name"></textarea>

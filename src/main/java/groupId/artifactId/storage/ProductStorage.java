@@ -10,6 +10,7 @@ import static groupId.artifactId.core.entity.ProductBuilder.create;
 public class ProductStorage implements IProductStorage {
     private static ProductStorage firstInstance = null;
     private final List<Product> productList = new ArrayList<>();
+    private int id =5;
 
     private ProductStorage(){
         this.productList.add(create().setId(1).setName("PC").setPrice(1500).setDiscount(200).setDescription("Nice and shiny").build());
@@ -27,17 +28,18 @@ public class ProductStorage implements IProductStorage {
     }
 
     @Override
-    public List<Product> getEssences() {
+    public List<Product> get() {
         return this.productList;
     }
 
     @Override
-    public Product getEssenceById(int id) {
-        return this.productList.stream().filter((i)->i.getId()==id).findFirst().orElse(null);
+    public Optional<Product> getById(int id) {
+        return this.productList.stream().filter((i) -> i.getId() == id).findFirst();
     }
 
     @Override
     public void save(Product product) {
+        product.setId(id++);
         this.productList.add(product);
     }
 }

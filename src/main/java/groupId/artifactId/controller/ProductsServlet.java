@@ -19,7 +19,7 @@ public class ProductsServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
         req.setCharacterEncoding("UTF-8");
         resp.setContentType("text/html; charset=UTF-8");
-        req.setAttribute("productData", productService.get());
+        req.setAttribute("productData", productService.getById());
         RequestDispatcher form = req.getRequestDispatcher("/ProductForm.jsp");
         form.forward(req, resp);
     }
