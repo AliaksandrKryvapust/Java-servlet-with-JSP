@@ -1,4 +1,4 @@
-package groupId.artifactId.controller;
+package groupId.artifactId.controller.servlet.ui;
 
 import groupId.artifactId.service.ProductService;
 

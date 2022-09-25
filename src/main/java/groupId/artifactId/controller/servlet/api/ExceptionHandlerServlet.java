@@ -1,4 +1,4 @@
-package groupId.artifactId.controller;
+package groupId.artifactId.controller.servlet.api;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
