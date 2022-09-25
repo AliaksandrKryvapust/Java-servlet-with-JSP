@@ -11,11 +11,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "ProductForm", urlPatterns = "/product_form")
+@WebServlet(name = "ProductForm", urlPatterns = "/ui/product_form")
 public class UiProductFormServlet extends HttpServlet {
     private final IProductService productService = ProductService.getInstance();
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+            throws ServletException, IOException {
         req.setAttribute("productData", productService.getById());
         RequestDispatcher form = req.getRequestDispatcher("/NewProductForm.jsp");
         form.forward(req, resp);

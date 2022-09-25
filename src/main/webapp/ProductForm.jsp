@@ -18,18 +18,18 @@
     </style>
 <body>
 
-    <p class="select"> <!--declaring classes to group properties-->
-       Product list <br> <br> <br>
-        Data foreach product </p>
-    <table>
-        <tr>
-            <th>Product id,#</th>
-            <th>Product name</th>
-            <th>Product price,$</th>
-            <th>Product discount,$</th>
-            <th>Product description</th>
-        </tr>
-            <c:forEach items="${productData}" var="product">
+<p class="select"> <!--declaring classes to group properties-->
+    Product list <br> <br> <br>
+    Data foreach product </p>
+<table>
+    <tr>
+        <th>Product id,#</th>
+        <th>Product name</th>
+        <th>Product price,$</th>
+        <th>Product discount,$</th>
+        <th>Product description</th>
+    </tr>
+    <c:forEach items="${productData}" var="product">
         <tr>
             <td>
                 <c:out value="${product.getId()}"/>
@@ -47,10 +47,12 @@
                 <c:out value="${product.getDescription()}"/>
             </td>
         </tr>
-                </c:forEach>
-    </table>
-    <p class="select">
-    <button onclick="location.href='${pageContext.request.contextPath}/product_form'" type="button">Add new products</button>
-    </p>
+    </c:forEach>
+</table>
+<p class="select">
+    <button onclick="location.href='${pageContext.request.contextPath}/ui/product_form'"
+            type="button">Add new products
+    </button>
+</p>
 </body>
 </html>

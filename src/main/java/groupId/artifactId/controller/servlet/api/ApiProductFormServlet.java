@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "ProductForm", urlPatterns = "/product_form")
-public class ProductFormServlet extends HttpServlet {
+@WebServlet(name = "ProductFormData", urlPatterns = "/api/product_form")
+public class ApiProductFormServlet extends HttpServlet {
     private final IProductService productService = ProductService.getInstance();
 
     @Override
@@ -34,6 +34,6 @@ public class ProductFormServlet extends HttpServlet {
         } catch (Exception e){
             throw new ServletException(e);
         }
-        resp.sendRedirect(req.getContextPath() + "/product");
+        resp.sendRedirect(req.getContextPath() + "/ui/product");
     }
 }

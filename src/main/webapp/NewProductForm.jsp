@@ -17,7 +17,7 @@
     /*set class properties, higher priority than p{}*/
     </style>
 <body>
-<form method="post" name="add" action="${pageContext.request.contextPath}/product_form">
+<form method="post" name="add" action="${pageContext.request.contextPath}/api/product_form">
 <p class="select"> <!--declaring classes to group properties-->
     Product list <br> <br> <br>
     Data foreach product

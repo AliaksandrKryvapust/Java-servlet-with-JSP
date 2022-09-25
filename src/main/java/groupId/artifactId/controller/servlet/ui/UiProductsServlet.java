@@ -11,13 +11,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "Product", urlPatterns = "/product")
+@WebServlet(name = "Product", urlPatterns = "/ui/product")
 public class UiProductsServlet extends HttpServlet {
 
     private final IProductService productService = ProductService.getInstance();
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+            throws IOException, ServletException {
 
         req.setCharacterEncoding("UTF-8");
         resp.setContentType("text/html; charset=UTF-8");
