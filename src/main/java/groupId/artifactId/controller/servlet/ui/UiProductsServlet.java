@@ -1,6 +1,7 @@
 package groupId.artifactId.controller.servlet.ui;
 
 import groupId.artifactId.service.ProductService;
+import groupId.artifactId.service.api.IProductService;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,12 +12,13 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet(name = "Product", urlPatterns = "/product")
-public class ProductsServlet extends HttpServlet {
+public class UiProductsServlet extends HttpServlet {
 
-    private final ProductService productService = ProductService.getInstance();
+    private final IProductService productService = ProductService.getInstance();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
+
         req.setCharacterEncoding("UTF-8");
         resp.setContentType("text/html; charset=UTF-8");
         req.setAttribute("productData", productService.getById());
