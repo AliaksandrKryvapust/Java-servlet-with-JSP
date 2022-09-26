@@ -5,8 +5,6 @@ import groupId.artifactId.storage.api.IProductStorage;
 
 import java.util.*;
 
-import static groupId.artifactId.core.entity.ProductBuilder.create;
-
 public class ProductStorage implements IProductStorage {
     private static ProductStorage firstInstance = null;
     private final List<Product> productList = new ArrayList<>();

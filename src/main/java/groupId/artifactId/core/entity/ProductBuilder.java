@@ -1,7 +1,6 @@
 package groupId.artifactId.core.entity;
 
 public class ProductBuilder {
-    private int id;
     private String name;
 
     private int price;
@@ -15,11 +14,6 @@ public class ProductBuilder {
 
     public static ProductBuilder create() {
         return new ProductBuilder();
-    }
-
-    public ProductBuilder setId(int id) {
-        this.id = id;
-        return this;
     }
 
     public ProductBuilder setName(String name) {
@@ -43,6 +37,6 @@ public class ProductBuilder {
     }
 
     public Product build() {
-        return new Product(id, name, price, discount, description);
+        return new Product(name, price, discount, description);
     }
 }
