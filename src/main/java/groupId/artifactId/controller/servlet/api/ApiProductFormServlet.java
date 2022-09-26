@@ -1,8 +1,8 @@
 package groupId.artifactId.controller.servlet.api;
 
+import groupId.artifactId.core.dto.ProductCreationDtoBuilder;
 import groupId.artifactId.service.ProductService;
 import groupId.artifactId.service.api.IProductService;
-import groupId.artifactId.util.Helper;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -30,7 +30,8 @@ public class ApiProductFormServlet extends HttpServlet {
             throw new IllegalArgumentException("Error code 400. Product discount is not a number");
         }
         try {
-            productService.add(Helper.createProductDTO(name,price,discount,description));
+            productService.add(ProductCreationDtoBuilder.create().setName(name).setPrice(Integer.parseInt(price)).
+                    setDiscount(Integer.parseInt(discount)).setDescription(description).build());
         } catch (Exception e){
             throw new ServletException(e);
         }
