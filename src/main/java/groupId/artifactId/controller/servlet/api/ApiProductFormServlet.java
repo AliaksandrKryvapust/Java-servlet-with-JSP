@@ -35,6 +35,7 @@ public class ApiProductFormServlet extends HttpServlet {
         } catch (Exception e){
             throw new ServletException(e);
         }
+        resp.setStatus(201);
         resp.sendRedirect(req.getContextPath() + "/ui/product");
     }
 }

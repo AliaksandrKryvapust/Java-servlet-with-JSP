@@ -1,4 +1,4 @@
-package groupId.artifactId.core.entity;
+package groupId.artifactId.storage.entity;
 
 public class ProductBuilder {
     private String name;

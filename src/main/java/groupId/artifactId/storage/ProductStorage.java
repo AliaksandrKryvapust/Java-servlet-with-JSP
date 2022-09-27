@@ -1,25 +1,16 @@
 package groupId.artifactId.storage;
 
-import groupId.artifactId.core.entity.Product;
 import groupId.artifactId.storage.api.IProductStorage;
+import groupId.artifactId.storage.entity.Product;
 
 import java.util.*;
 
 public class ProductStorage implements IProductStorage {
-    private static ProductStorage firstInstance = null;
+
     private final List<Product> productList = new ArrayList<>();
-    private int id =1;
 
-    private ProductStorage(){
+    public ProductStorage() {
 
-    }
-    public static ProductStorage getInstance() {
-        synchronized (ProductStorage.class) {
-            if (firstInstance == null) {
-                firstInstance = new ProductStorage();
-            }
-        }
-        return firstInstance;
     }
 
     @Override
@@ -34,7 +25,10 @@ public class ProductStorage implements IProductStorage {
 
     @Override
     public void save(Product product) {
-        product.setId(id++);
+        if (product.getId() != null){
+            throw new IllegalStateException("Error code 500. id should be empty");
+        }
+        product.setId(productList.size()+1);
         this.productList.add(product);
     }
 }

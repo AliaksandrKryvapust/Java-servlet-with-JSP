@@ -1,10 +1,10 @@
 package groupId.artifactId.service;
 
 import groupId.artifactId.core.dto.ProductCreationDto;
-import groupId.artifactId.core.entity.Product;
+import groupId.artifactId.storage.entity.Product;
 import groupId.artifactId.core.mapper.ProductMapper;
 import groupId.artifactId.service.api.IProductService;
-import groupId.artifactId.storage.ProductStorage;
+import groupId.artifactId.storage.api.StorageFactory;
 import groupId.artifactId.storage.api.IProductStorage;
 
 import java.util.List;
@@ -16,7 +16,7 @@ public class ProductService implements IProductService {
     private final ProductValidator validator;
 
     private ProductService(){
-        this.storage= ProductStorage.getInstance();
+        this.storage= StorageFactory.getInstance().getProductStorage();
         this.validator=ProductValidator.getInstance();
     }
     public static ProductService getInstance() {

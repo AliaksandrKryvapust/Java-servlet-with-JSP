@@ -1,7 +1,7 @@
-package groupId.artifactId.core.entity;
+package groupId.artifactId.storage.entity;
 
 public class Product {
-    private int id;
+    private Integer id;
     private final String name;
     private final int price;
     private final int discount;
@@ -13,7 +13,7 @@ public class Product {
         this.description = description;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
