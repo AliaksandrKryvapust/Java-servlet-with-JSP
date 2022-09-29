@@ -4,7 +4,6 @@ import groupId.artifactId.core.dto.ProductCreationDtoBuilder;
 import groupId.artifactId.service.ProductService;
 import groupId.artifactId.service.api.IProductService;
 
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -16,7 +15,7 @@ public class ApiProductFormServlet extends HttpServlet {
     private final IProductService productService = ProductService.getInstance();
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         req.setCharacterEncoding("UTF-8");
         resp.setContentType("text/html; charset=UTF-8");
         String name = req.getParameter("name");
@@ -33,7 +32,7 @@ public class ApiProductFormServlet extends HttpServlet {
             productService.add(ProductCreationDtoBuilder.create().setName(name).setPrice(Integer.parseInt(price)).
                     setDiscount(Integer.parseInt(discount)).setDescription(description).build());
         } catch (Exception e){
-            throw new ServletException(e);
+            resp.setStatus(500);
         }
         resp.setStatus(201);
         resp.sendRedirect(req.getContextPath() + "/ui/product");

@@ -25,5 +25,6 @@ public class UiProductsServlet extends HttpServlet {
         req.setAttribute("productData", productService.getById());
         RequestDispatcher form = req.getRequestDispatcher("/ProductForm.jsp");
         form.forward(req, resp);
+        resp.setStatus(200);
     }
 }
